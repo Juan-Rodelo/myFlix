@@ -139,9 +139,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/movies', (req, res) => {
-  res.send(topMovies);
+  res.json(topMovies);
 });
-
 
 
 app.listen(8080, () => {
