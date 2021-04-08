@@ -1,25 +1,3 @@
-// Create the server
-const express = require('express');
-const app = express();
-
-// Import modules for logging in
-const morgan = require('morgan');
-
-// Middleware
-// Here we pass morgan into the app.use
-app.use(morgan('common'));
-// serves files from public folder
-app.use(express.static('public'));
-
-
-
-
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('The movies exploded the server!');
-});
-
-let favFilms =[
 {
   "title": "Arrival",
   "year": "2016",
@@ -130,20 +108,3 @@ let favFilms =[
   "imdbLink": "https://www.imdb.com/title/tt0249241/",
   "imdbRating": "8.2"
 },
-]
-
-//get requests
-
-app.get('/', (req, res) => {
-  res.send('Films Under Construction');
-});
-
-app.get('/movies', (req, res) => {
-  res.send(topMovies);
-});
-
-
-
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080.');
-});
