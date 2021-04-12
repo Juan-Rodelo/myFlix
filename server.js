@@ -13,6 +13,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 
+
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('The movies exploded the server!');
@@ -121,7 +122,7 @@ let favFilms =[
 {
   "title": "Werckmeister Harmonies",
   "year": "2000",
-  "genre": ["Drama","Mystery"]
+  "genre": ["Drama","Mystery"],
   "length": "2h 25min",
   "director": ["Béla Tarr","Ágnes Hranitzky"],
   "writer": "László Krasznahorkai ",
