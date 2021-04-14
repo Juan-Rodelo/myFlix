@@ -6,14 +6,86 @@
     <title> Documentation</title>
   </head>
   <body>
-    <h1>My Flix</h1>
+
+    <header>
+      <h1>My Flix</h1>
+      <h2>Create a REST API with Node.js</h2>
+    </header>
+
     <div>
+      <h3>Objective:</h3>
       <p>Server-side component of a “movies” web application.
       The web application will provide users with access to information about different movies,
       directors, and genres. Users will be able to sign up, update their personal information,
       and create a list of their favorite movies.
       </p>
     </div>
-  </body>
 
+    <div>
+      <table>
+     <tr>
+       <th>Requests (Business Logic)</th>
+       <th>URL Endpoint</th>
+       <th>HTTP Method</th>
+       <th>Request Body</th>
+       <th>Response Body</th>
+     </tr>
+     <tr>
+        <td>Get a list of all movies</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>JSON
+    </tr>
+    <tr>
+       <td>Get information about one specific movie by title; use %20 for spaces</td>
+       <td>/movies/:Title</td>
+       <td>GET</td>
+       <td>None</td>
+       <td>JSON
+   </tr>
+   <tr>
+        <td>Return data about a director by name; use %20 for spaces</td>
+        <td>/movies/Directors/:Name</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>JSON</td>
+    </tr>
+    <tr>
+       <td>New users registration</td>
+       <td>/users</td>
+       <td>POST</td>
+       <td>JSON</td>
+       <td>JSON</td>
+    </tr>
+    <tr>
+      <td>Put updates to user information</td>
+      <td>/users/:Username</td>
+      <td>PUT</td>
+      <td>JSON</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+      <td>Allow users to add a movie to their list of favorites</td>
+      <td>/users/:Username/Movies/:MovieID</td>
+      <td>POST</td>
+      <td>None</td>
+      <td>JSON</td>
+    </tr>
+    <tr>
+        <td>Deletes movie from list of user's favorites</td>
+        <td>/users/:Username/Movies/:MovieID</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>JSON
+      <tr>
+        <td>Deletes user from registration database</td>
+        <td>/users/:Username</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>Message</td>
+    </tr>
+  </table>
+  </div>
+</body>
 </html>
