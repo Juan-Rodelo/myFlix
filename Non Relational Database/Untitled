@@ -1,0 +1,65 @@
+{
+  _id: 1,
+  Title:"Silence of the Lambs",
+  Description: "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+  Genre: {
+    Name: "Thriller",
+    Description: "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  Director: {
+    Name: "Jonathan Demme",
+    Bio: "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+    Birth: "1944",
+    Death: "2017"
+  },
+  ImagePath: "silenceofthelambs.png",
+  Featured: true
+}
+
+or :
+
+{
+  "_id": 1,
+  "Title":"Silence of the Lambs",
+  "Description": "A young FBI cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+  "Genre": {
+    "Name": "Thriller",
+    "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that involves excitement and suspense in the audience."
+  },
+  //nested keys and values (called embedded documents)
+  "Director": {
+    "Name": "Jonathan Demme",
+    "Bio": "Robert Jonathan Demme was an American director, producer, and screenwriter.",
+    "Birth": "1944",
+    "Death": "2017"
+  },
+
+  "ImagePath": "silenceofthelambs.png",
+  "Featured": true
+}
+
+{
+  "id": 1,
+  "title": "Arrival",
+  "Descrition":  "Arrival is a 2016 American science fiction drama film directed by Denis Villeneuve and written by Eric Heisserer. ... The film follows a linguist enlisted by the United States Army to discover how to communicate with extraterrestrial aliens who have arrived on Earth, before tensions lead to war."
+  "Genre": {
+    "Name": "Sci-fi",
+    "Description":"Science fiction (sometimes shortened to sci-fi or SF) is a genre of speculative fiction that typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life."
+  },
+  "Director": {
+    "Name": "Denis Villeneuve",
+    "Bio": "	Denis Villeneuve OC CQ is a French Canadian film director, producer, and screenwriter. He is a four-time recipient of the Canadian Screen Award for Best Direction, for Maelström in 2001, Polytechnique in 2009, Incendies in 2011 and Enemy in 2013.",
+    "Birth": "1967",
+  },
+  
+  "director": '', id 3
+
+	Born: 1967
+image url: https://s.studiobinder.com/wp-content/uploads/2010/03/Arrival-Video-Essay-How-to-Balance-Fear-and-Intrigue-WP.jpg
+  "writers": ["Eric Heisserer", "Ted Chiang"],
+  "starring": ["Amy Adams", "Jeremy Renner", "Forest Whitaker"],
+"year": '2016',
+"imdbLink": "https://www.imdb.com/title/tt2543164/",
+  "imdbRating": "7.9"
+    "length": '1h 56min',
+  },
