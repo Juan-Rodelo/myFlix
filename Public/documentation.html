@@ -20,7 +20,7 @@
       and create a list of their favorite movies.
       </p>
       <p>
-      <strong>Project:</strong> mongoDB, Express, Node.js
+      <strong>Project:</strong> mongoDB, Express, Node.js, moongose
 
 
     </p>
@@ -40,7 +40,7 @@
         <td>/movies</td>
         <td>GET</td>
         <td>None</td>
-        <td>JSON
+        <td>JSON</td>
     </tr>
     <tr>
        <td>Get information about one specific movie by title; use %20 for spaces</td>
@@ -92,6 +92,34 @@
     </tr>
   </table>
   </div>
+
+<h3>movies Mongoose Model</h3>
+<div>
+Title: {type: String, required: true}, <br>
+Description: {type: String, required: true}, <br>
+Genre: { <br>
+  Name: String, <br>
+  Description: String <br>
+}, <br>
+Director: { <br>
+  Name: String, <br>
+  Bio: String, <br>
+  Birth: String, <br>
+  Death: String <br>
+}, <br>
+Actors: [String], <br>
+ImagePath: String, <br>
+Featured: Boolean <br>
+</div>
+
+<h3>users Mongoose Model</h3>
+<div>
+Username: {type: String, required: true}, <br>
+Password: {type: String, required: true}, <br>
+Email: {type: String, required: true}, <br>
+Birthday: Date, <br>
+FavoriteMovies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }]
+</div>
 
 
 
