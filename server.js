@@ -3,7 +3,9 @@ const express = require('express'),
   bodyParser = require('body-parser'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
-  Models = require('./models.js');
+  Models = require('./models.js'),
+  cors = require ('cors');
+
 
 // require passport and import the passport model
 const passport = require('passport');
@@ -14,6 +16,8 @@ const Movies = Models.Movie;
 const Users = Models.User;
 
 const app = express();
+
+app.use(cors());
 
 //middleware function
 app.use(bodyParser.json());
@@ -89,8 +93,19 @@ app.get('/movies/directors/:Name', passport.authenticate('jwt', {session : false
 
 
 //New users registration
-app.post('/users', (req, res) => {
+app.post('/users', [
+  check('Username', 'Username is required').isLenght({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email','Email does not appear to be valid').isEmail();
+], (req, res) => {
+  let errors = validationResult(req);
+
+   if (!errors.isEmpty()) {
+     return res.status(422).json({ errors: errors.array() });
+   }
   res.send('Registration succesful!')
+   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
@@ -99,7 +114,7 @@ app.post('/users', (req, res) => {
         Users
           .create({
             Username: req.body.Username,
-            Password: req.body.Password,
+            Password: hashedPassword,
             Email: req.body.Email,
             Birthday: req.body.Birthday
           })
