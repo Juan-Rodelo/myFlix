@@ -3,7 +3,7 @@ LocalStrategy = require('passport-local').Strategy,
 Models = require('./models.js'),
 passportJWT = require('passport-jwt');
 
-//server side validation 
+//server side validation
 const { check, validationResult } = require('express-validator');
 
 let Users = Models.User,
@@ -24,7 +24,7 @@ let Users = Models.User,
 
       if (!user) {
         console.log('incorrect username');
-        return callback(null, false, {message: 'Incorrect username or password.'});
+        return callback(null, false, {message: 'Incorrect username.'});
       }
 
       if (!user.validatePassword(password)) {
