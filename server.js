@@ -4,12 +4,15 @@ const express = require('express'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
-  cors = require ('cors');
+  cors = require('cors');
 
 
 // require passport and import the passport model
 const passport = require('passport');
 require('./passport.js');
+
+//require validation
+const { check, validationResult } = require('express-validator');
 
 //moongose models exported into variables
 const Movies = Models.Movie;
