@@ -50,6 +50,10 @@ app.use((err, req, res, next) => {
   res.status(500).send('Server Error!');
 });
 
+app.get('/', (req, res) => {
+  res.send('Welcome to myFlix!')
+});
+
 
 //List of all movies
 app.get('/movies', passport.authenticate('jwt', {session : false}), (req, res) => {
