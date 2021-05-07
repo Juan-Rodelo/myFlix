@@ -1,0 +1,6 @@
+{"_id":{"$oid":"608ada77688e460cff514abf"},"FavoriteMovies":[],"Username":"Juan Rodelo","Password":"Juan849","Email":"juancamilo849@gmail.com","__v":0}
+{"_id":{"$oid":"608c2bb478bbe9259d09302f"},"FavoriteMovies":[],"Username":"Amalia Mourad","Password":"svaepo8","Email":"amalia@gmail.com","__v":0}
+{"_id":{"$oid":"608c2c5835cd4d26b4d6bba1"},"FavoriteMovies":[],"Username":null,"Password":null,"Email":null,"__v":0,"Birthday":null}
+{"_id":{"$oid":"608c362144bce729ac7c56d5"},"FavoriteMovies":[{"$oid":"6081b29d96a4cf7556f5e9cf"},{"$oid":"6081a8c596a4cf7556f5e9cd"}],"Username":"Paco Guerra","Password":"pocogn155667","Email":"pacogn@gmail.com","__v":0,"Birthday":null}
+{"_id":{"$oid":"60905e43c1471885897ee550"},"FavoriteMovies":[],"Username":"Francis Bacon","Password":"thelogicofsensation","Email":"bacon@gmail.com","Birthday":{"$date":{"$numberLong":"-295920000000"}},"__v":0}
+{"_id":{"$oid":"60906ab2ccc9b68828b29243"},"FavoriteMovies":[],"Username":"Bateson","Password":"mindandnature","Email":"bateson@gmail.com","Birthday":{"$date":{"$numberLong":"-295920000000"}},"__v":0}
