@@ -41,9 +41,9 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 // Connect Moongose
-// mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 app.use((err, req, res, next) => {
@@ -57,8 +57,8 @@ app.get('/', (req, res) => {
 
 
 //List of all movies
-// app.get('/movies', passport.authenticate('jwt', {session : false}), (req, res) => {
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
+  // app.get('/movies', (req, res) => {
   Movies.find().
     then((movies) => {
       res.status(201).json(movies);
@@ -114,6 +114,7 @@ app.post('/users', [
     return res.status(422).json({ errors: errors.array() });
   }
   res.send('Registration succesful!')
+  // Hash any password entered by the user when registering before storing it in the MongoDB database
   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
@@ -125,7 +126,7 @@ app.post('/users', [
             Username: req.body.Username,
             Password: hashedPassword,
             Email: req.body.Email,
-            Birthday: req.body.Birthday
+            // Birthday: req.body.Birthday
           })
           .then((user) => { res.status(201).json(user) })
           .catch((error) => {
@@ -142,6 +143,7 @@ app.post('/users', [
 
 
 //Read Users
+// app.get('/users', (req, res) => {
 app.get('/users', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.find()
     .then((users) => {
@@ -169,15 +171,24 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 
 //Update User info
 app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+  let obj = {}
+  if (req.body.Username) {
+    obj.Username = req.body.Username;
+  }
+  if (req.body.Password) {
+    let hashedPassword = Users.hashPassword(req.body.Password);
+
+    obj.Password = hashedPassword
+  }
+  if (req.body.Email) {
+    obj.Email = req.body.Email;
+  }
+  if (req.body.Birthday) {
+    obj.Birthday = req.body.Birthday;
+  }
   Users.findOneAndUpdate({ Username: req.params.Username },
     {
-      $set:
-      {
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      }
+      $set: obj
     },
     { new: true }, // This line makes sure that the updated document is returned
     (err, updatedUser) => {
