@@ -4,7 +4,8 @@ const express = require('express'),
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
-  cors = require('cors');
+  cors = require('cors'),
+  config = require('./config');
 
 
 // require passport and import the passport model
@@ -41,7 +42,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 
 // Connect Moongose
-mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -203,6 +204,8 @@ app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 
 // Add a movie to a user's list of favorites
 app.post('/users/:Username/Movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
+  // app.post('/users/:Username/Movies/:MovieID', (req, res) => {
+
   Users.findOneAndUpdate({ Username: req.params.Username }, {
     $push: { FavoriteMovies: req.params.MovieID }
   },
