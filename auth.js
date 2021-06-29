@@ -1,4 +1,4 @@
-const jwtSecret = 'your_jwt_secret'; 
+const jwtSecret = 'your_jwt_secret';
 
 const jwt = require('jsonwebtoken'),
   passport = require('passport');
@@ -20,6 +20,7 @@ module.exports = (router) => {
   router.post('/login', (req, res) => {
     passport.authenticate('local', { session: false }, (error, user, info) => {
       if (error || !user) {
+        console.log(error, user);
         return res.status(400).json({
           message: 'Something is not right',
           user: user

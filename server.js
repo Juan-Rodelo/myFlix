@@ -114,7 +114,7 @@ app.post('/users', [
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  res.send('Registration succesful!')
+  // res.send('Registration succesful!')
   // Hash any password entered by the user when registering before storing it in the MongoDB database
   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
