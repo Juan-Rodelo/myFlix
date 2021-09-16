@@ -1,6 +1,17 @@
-// Create the server
+
 const express = require('express'),
+  /**
+   * Express is used to create and maintain web servers as well as manage HTTP
+   * requests. Rather than using modules (e.g., the HTTP module), you can simply
+   * use Express to route requests/responses and interact with request data.
+   */
   bodyParser = require('body-parser'),
+  /**
+ * The body-parser middleware module allows you to read the “body” of HTTP
+ * requests within your request handlers simply by using the code req.body.
+ * const passport = require('passport'); //Passport is an authentication
+ * middleware
+ */
   uuid = require('uuid'),
   mongoose = require('mongoose'),
   Models = require('./models.js'),
@@ -21,6 +32,12 @@ const Users = Models.User;
 
 const app = express();
 
+/**
+ * Allows CORS only for the websites listed in this array
+ * @constant
+ * @type {array}
+ */
+
 let allowedOrigins = ['https://film-spelunker.netlify.app/', 'http://localhost:8080', 'http://localhost:1234'];
 
 app.use(cors({
@@ -34,7 +51,10 @@ app.use(cors({
   }
 }));
 
-//middleware function
+/**
+ * Declaring app.use before the routes means that each route request
+ * will run all the following app.use on it.
+ */
 app.use(bodyParser.json());
 
 //import authentication file. app ensures that Express is available in your “auth.js” file as well.
@@ -52,7 +72,10 @@ app.use(morgan('common'));
 // serves files from public folder
 app.use(express.static('public'));
 
-// Connect Moongose
+
+/**
+ * allows the API to make CRUD operations on the dataase
+ */
 mongoose.connect(config.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });

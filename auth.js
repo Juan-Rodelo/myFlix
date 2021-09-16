@@ -1,3 +1,10 @@
+
+/**
+ * The data of the constanst is stored in an environmental variable
+ * and is used for encoding and decoding the JWT token
+ * @constant
+ * @type {string}
+ */
 const jwtSecret = 'your_jwt_secret';
 
 const jwt = require('jsonwebtoken'),
@@ -5,7 +12,11 @@ const jwt = require('jsonwebtoken'),
 
 require('./passport'); // Your local passport file
 
-
+/**
+ * creates a JWT token to verify the user is the same
+ * @function generateJWTToken
+ * @param {object} user - The object user is passed in along with its data
+ */
 let generateJWTToken = (user) => {
   return jwt.sign(user, jwtSecret, {
     subject: user.Username, // This is the username you’re encoding in the JWT
